@@ -82,7 +82,8 @@ app.post('/submit', (req, res) => {
         });
     });
 
-    res.redirect('https://www.akhairwigs.com/thankyou.html');
+    res.redirect('./thankyou.html');
+    // res.redirect('https://www.akhairwigs.com/thankyou.html');
 });
 
 const server = http.createServer(app);

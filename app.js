@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const port = 80;
+const port = process.env.PORT || 3000; // Use port 3000 or environment-specified port
 
 app.use(express.urlencoded({ extended: true }));
 

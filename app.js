@@ -1,8 +1,10 @@
+const http = require('http');
 const express = require('express');
 const mysql = require('mysql');
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+
 const app = express();
-const port = 3000;
+const port = 80;
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -24,16 +26,12 @@ app.post('/submit', (req, res) => {
 
     const { name, email, phone, page, message = "Na" } = req.body;
 
-    // Commented out email configuration and sending
-
     const msg = `New lead arrived\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPage: ${page}\nMessage:\n${message}`;
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'info.subhojitpatra@gmail.com', // your Gmail address
-            // enable 2 factor authentication and then go to 'App passwords' then select App and then generate the password then add it below
-            // refer : https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted
+            user: 'info.subhojitpatra@gmail.com',
             pass: 'sxadegzqgazbjiko'
         }
     });
@@ -58,8 +56,6 @@ app.post('/submit', (req, res) => {
         }
     });
 
-
-    // Database connection and insertion
     const db = mysql.createConnection({
         host: 'localhost',
         user: 'taxsais6_lead',
@@ -86,10 +82,11 @@ app.post('/submit', (req, res) => {
         });
     });
 
-    // Optionally redirect user after processing
     res.redirect('https://www.akhairwigs.com/thankyou.html');
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+const server = http.createServer(app);
+
+server.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });

@@ -9,14 +9,14 @@ const port = process.env.PORT || 3000; // Use port 3000 or environment-specified
 app.use(express.urlencoded({ extended: true }));
 
 // Root endpoint
-app.get('/', (req, res) => {
-    res.send('Welcome to my simple Express server!');
-});
+// app.get('/', (req, res) => {
+//     res.send('Welcome to my simple Express server!');
+// });
 
 // Hello endpoint
-app.get('/hello', (req, res) => {
-    res.send('Hello, world!');
-});
+// app.get('/hello', (req, res) => {
+//     res.send('Hello, world!');
+// });
 
 app.post('/submit', (req, res) => {
     if (!req.body.name || !req.body.email || !req.body.phone || !req.body.page) {

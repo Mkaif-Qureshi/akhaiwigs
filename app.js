@@ -52,7 +52,7 @@ app.post('/submit', (req, res) => {
             res.status(500).send(`Failed to send email. Error: ${error.message}`);
         } else {
             console.log('Email sent successfully.');
-            res.send('Email sent successfully.');
+            // res.send('Email sent successfully.');
         }
     });
 
@@ -76,12 +76,12 @@ app.post('/submit', (req, res) => {
                 console.error('Error inserting data: ' + error.message);
                 res.status(500).send('Error inserting data: ' + error.message);
             } else {
-                // console.log('Data inserted successfully!');
-                res.send('Data inserted successfully!');
+                console.log('Data inserted successfully!');
+                // res.send('Data inserted successfully!');
             }
         });
     });
-    // res.redirect('https://www.akhairwigs.com/thankyou.html');
+    res.redirect('https://www.akhairwigs.com/thankyou.html');
     // res.redirect('/thankyou.html');
 });
 

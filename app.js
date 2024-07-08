@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extended: true }));
 // });
 
 // Hello endpoint
-// app.get('/hello', (req, res) => {
-//     res.send('Hello, world!');
-// });
+app.get('/testthisserver', (req, res) => {
+    res.send('Hello, world!');
+});
 
 app.post('/submit', (req, res) => {
     if (!req.body.name || !req.body.email || !req.body.phone || !req.body.page) {
@@ -76,12 +76,13 @@ app.post('/submit', (req, res) => {
                 console.error('Error inserting data: ' + error.message);
                 res.status(500).send('Error inserting data: ' + error.message);
             } else {
-                console.log('Data inserted successfully!');
+                // console.log('Data inserted successfully!');
                 res.send('Data inserted successfully!');
             }
         });
     });
-    res.redirect('https://www.akhairwigs.com/thankyou.html');
+    // res.redirect('https://www.akhairwigs.com/thankyou.html');
+    res.redirect('/thankyou.html');
 });
 
 const server = http.createServer(app);

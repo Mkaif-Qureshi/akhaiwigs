@@ -38,11 +38,11 @@ app.post('/submit', (req, res) => {
 
     const mailOptions = {
         from: email,
-        to: 'info.subhojitpatra@gmail.com',
+        to: 'akhairwigs@gmail.com',
         subject: 'New Lead Submission',
         text: msg,
         headers: {
-            'Reply-To': 'info.subhojitpatra@gmail.com'
+            'Reply-To': 'akhairwigs@gmail.com'
         }
     };
 
